@@ -1,0 +1,209 @@
+/* Reset some default browser styles */
+body, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    /* make linear gradinet in background */
+    background: linear-gradient(180deg, #000000, #050315, #201C46, #3A2E6D, #4D3E8C);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment:fixed;
+    background-size: cover; 
+    color: #fff;
+    width: 100%;    
+    height: 100vh;
+}
+
+.header{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header h1{
+    font-size: 4rem;
+    font-weight: bold;
+}
+.header_icon{
+    margin-left: 1rem;
+    width: 6rem;    
+}
+
+.choose_test{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.choose_test h2{
+    font-size: 3rem;
+    font-weight: bold;  
+}
+
+.choose_test img{
+    margin-left: 1rem;
+    width: 6rem;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: space-around;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 22%;
+    height: 27rem;  
+    margin: 1rem;
+    background: #282828;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    display: flex;  
+    flex-direction: column; 
+    align-items: center;        
+    justify-content: space-around;
+    gap: 5rem;
+}
+
+.card img{
+    width: 70%; 
+}
+
+.card button{
+    padding: 1rem 2rem;
+    background: #5f509a;
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    width: 70%;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.card button:hover{
+    background: #4a407e;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .choose_test h2 {
+        font-size: 2rem;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+    }
+
+    .card img {
+        width: 50%;
+    }
+
+    .card button {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .header_icon {
+        width: 4rem;
+        margin-left: 0;
+    }
+
+    .choose_test {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choose_test h2 {
+        font-size: 2rem;
+    }
+
+    .choose_test img {
+        width: 4rem;
+        margin-left: 0;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card img {
+        width: 70%;
+    }
+
+    .card button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .header_icon {
+        width: 3rem;
+    }
+
+    .choose_test h2 {
+        font-size: 1.5rem;
+    }
+
+    .choose_test img {
+        width: 3rem;
+    }
+
+    .card {
+        padding: 0.5rem;
+    }
+
+    .card img {
+        width: 60%;
+    }
+
+    .card button {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
