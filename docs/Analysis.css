@@ -1,0 +1,173 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(180deg, #000000, #050315, #201C46, #3A2E6D, #4D3E8C);
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    position: relative;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header a:hover {
+    color: #007BFF;
+    transform: scale(1.05);
+}
+
+.header_title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 1rem;
+    text-align: center;
+}
+
+.header_icon {
+    width: 6rem;
+    height: auto;
+    object-fit: contain;
+    margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+    .header_title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .header_icon {
+        width: 4rem;
+    }
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(5px);
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00BFFF;
+}
+
+.section h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+    color: #fff;
+}
+
+.section p, .section ul {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.section ul {
+    list-style: disc;
+    padding-left: 2rem;
+}
+
+.visualization {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 5px;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .header_title {
+        font-size: 2rem;
+    }
+
+    .header_icon {
+        width: 4rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section {
+        padding: 1.5rem;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+    }
+
+    .section h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header_title {
+        font-size: 1.8rem;
+    }
+
+    .header a {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 1rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .section p, .section ul {
+        font-size: 1rem;
+    }
+}
