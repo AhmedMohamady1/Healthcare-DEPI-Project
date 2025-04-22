@@ -1,7 +1,0 @@
-pickle
-jsonify
-request
-CORS
-scikit learn
-pandas 
-numpy
