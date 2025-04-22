@@ -6,7 +6,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Enable CORS for all routes, allowing requests from your frontend origin
-CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})  # Specify your frontend origin
+CORS(app, resources={r"/*": {"origins": "*"}})  # Specify your frontend origin
 
 # Load the models
 diabetes_model = pickle.load(open("models/diabetes_model.pkl", "rb"))
