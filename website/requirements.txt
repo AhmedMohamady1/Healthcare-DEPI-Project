@@ -1,7 +1,0 @@
-flask
-flask-cors
-numpy
-gunicorn
-scikit-learn
-pandas
-xgboost
