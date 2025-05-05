@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Downloads/diseases/heart_disease/mlruns/883378535151348649/e0fa40c6db4543b8a240df5f311c1408/artifacts
+end_time: 1746480300575
+entry_point_name: ''
+experiment_id: '883378535151348649'
+lifecycle_stage: active
+run_id: e0fa40c6db4543b8a240df5f311c1408
+run_name: xgboost_fine-tuned
+run_uuid: e0fa40c6db4543b8a240df5f311c1408
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746480287107
+status: 3
+tags: []
+user_id: pc
