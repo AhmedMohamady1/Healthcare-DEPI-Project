@@ -1,0 +1,115 @@
+Starting Health Prediction API
+Loading diabetes model from MLflow Model Registry
+Successfully loaded diabetes model
+Loading heart disease model from MLflow Model Registry
+Successfully loaded heart disease model
+Starting Flask server
+Starting Health Prediction API
+Loading diabetes model from MLflow Model Registry
+Successfully loaded diabetes model
+Loading heart disease model from MLflow Model Registry
+Successfully loaded heart disease model
+Starting Flask server
+Index endpoint accessed
+Starting Health Prediction API
+Loading diabetes model from MLflow Model Registry
+Successfully loaded diabetes model
+Loading heart disease model from MLflow Model Registry
+Successfully loaded heart disease model
+Starting Flask server
+Starting Health Prediction API
+Loading diabetes model from MLflow Model Registry
+Successfully loaded diabetes model
+Loading heart disease model from MLflow Model Registry
+Successfully loaded heart disease model
+Starting Flask server
+Diabetes test endpoint accessed
+Making diabetes prediction
+Diabetes prediction result: 1, message: You are likely to have diabetes.
+Diabetes test endpoint accessed
+Missing required field: 'BMI'
+Index endpoint accessed
+Diabetes test endpoint accessed
+Making diabetes prediction
+Diabetes prediction result: 1, message: You are likely to have diabetes.
+Diabetes test endpoint accessed
+Making diabetes prediction
+Diabetes prediction result: 1, message: You are likely to have diabetes.
+Diabetes test endpoint accessed
+Making diabetes prediction
+Diabetes prediction result: 0, message: You are unlikely to have diabetes.
+Diabetes test endpoint accessed
+Missing required field: 'HighChol'
+Diabetes test endpoint accessed
+Invalid value for field: could not convert string to float: 'not_a_number'
+Index endpoint accessed
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 0, message: You are not at risk for heart disease.
+Index endpoint accessed
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 1, message: You are at risk for heart disease.
+Index endpoint accessed
+Heart test endpoint accessed
+Invalid value for field: could not convert string to float: 'not_a_number'
+Index endpoint accessed
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 0, message: You are not at risk for heart disease.
+Index endpoint accessed
+Heart test endpoint accessed
+Missing required field: 'stroke'
+Index endpoint accessed
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 0, message: You are not at risk for heart disease.
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 0, message: You are not at risk for heart disease.
+Index endpoint accessed
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 1, message: You are at risk for heart disease.
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 0, message: You are not at risk for heart disease.
+Heart test endpoint accessed
+Missing required field: 'stroke'
+Heart test endpoint accessed
+Invalid value for field: could not convert string to float: 'not_a_number'
+Index endpoint accessed
+Diabetes test endpoint accessed
+Making diabetes prediction
+Diabetes prediction result: 1, message: You are likely to have diabetes.
+Diabetes test endpoint accessed
+Making diabetes prediction
+Diabetes prediction result: 1, message: You are likely to have diabetes.
+Diabetes test endpoint accessed
+Missing required field: 'HighChol'
+Diabetes test endpoint accessed
+Invalid value for field: could not convert string to float: 'not_a_number'
+Starting Health Prediction API
+Loading diabetes model from MLflow Model Registry
+Successfully loaded diabetes model
+Loading heart disease model from MLflow Model Registry
+Successfully loaded heart disease model
+Starting Flask server
+Starting Health Prediction API
+Loading diabetes model from MLflow Model Registry
+Successfully loaded diabetes model
+Loading heart disease model from MLflow Model Registry
+Successfully loaded heart disease model
+Starting Flask server
+Index endpoint accessed
+Index endpoint accessed
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 1, message: You are at risk for heart disease.
+Heart test endpoint accessed
+Making heart disease prediction
+Heart disease prediction result: 0, message: You are not at risk for heart disease.
+Heart test endpoint accessed
+Missing required field: 'stroke'
+Heart test endpoint accessed
+Invalid value for field: could not convert string to float: 'not_a_number'
