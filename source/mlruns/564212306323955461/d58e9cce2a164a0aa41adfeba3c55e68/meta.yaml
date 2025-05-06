@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/564212306323955461/d58e9cce2a164a0aa41adfeba3c55e68/artifacts
+end_time: 1746525170226
+entry_point_name: ''
+experiment_id: '564212306323955461'
+lifecycle_stage: active
+run_id: d58e9cce2a164a0aa41adfeba3c55e68
+run_name: diabetes_xgboost
+run_uuid: d58e9cce2a164a0aa41adfeba3c55e68
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746525158153
+status: 3
+tags: []
+user_id: pc
