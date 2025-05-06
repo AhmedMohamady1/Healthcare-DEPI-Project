@@ -1,188 +1,111 @@
-from flask import Flask, jsonify, request, Response
-from flask_cors import CORS  # Import CORS
-import pickle
+from flask import Flask, request, jsonify, Response
+from flask_cors import CORS
 import numpy as np
 import mlflow.pyfunc
-from typing import Dict, Any, List, Union, Optional, Tuple
 import logging
 from logging.handlers import RotatingFileHandler
-import os
 import traceback
+from typing import Dict, Any, Tuple
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# --- Logging Setup ---
+def setup_logger(name: str = 'health_prediction_api') -> logging.Logger:
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.INFO)
 
-# Create logger
-logger = logging.getLogger('health_prediction_api')
+    console_handler = logging.StreamHandler()
+    file_handler = RotatingFileHandler('health_api.log', maxBytes=10 * 1024 * 1024, backupCount=5)
 
-# Create console handler
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-logger.addHandler(console_handler)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    console_handler.setFormatter(formatter)
+    file_handler.setFormatter(formatter)
 
-# Create file handler
-file_handler = RotatingFileHandler('health_api.log', maxBytes=10485760, backupCount=5)
-file_handler.setLevel(logging.INFO)
-logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
 
+    return logger
+
+logger = setup_logger()
+
+# --- Flask App Setup ---
 app = Flask(__name__)
-
-# Enable CORS for all routes, allowing requests from your frontend origin
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-logger.info("Starting Health Prediction API")
+# --- Load Models from MLflow ---
+def load_model_from_registry(model_name: str, stage: str = "1"):
+    try:
+        logger.info(f"Loading model: {model_name}")
+        model = mlflow.pyfunc.load_model(f"models:/{model_name}/{stage}")
+        logger.info(f"{model_name} model loaded successfully.")
+        return model
+    except Exception as e:
+        logger.error(f"Error loading {model_name} model: {e}")
+        logger.error(traceback.format_exc())
+        raise
 
-# Load registered production models from MLflow Model Registry
-try:
-    logger.info("Loading diabetes model from MLflow Model Registry")
-    diabetes_model = mlflow.pyfunc.load_model("models:/diabetes_production/1")
-    logger.info("Successfully loaded diabetes model")
-    
-    logger.info("Loading heart disease model from MLflow Model Registry")
-    heart_model = mlflow.pyfunc.load_model("models:/heart_disease_production/1")
-    logger.info("Successfully loaded heart disease model")
-except Exception as e:
-    logger.error(f"Failed to load models: {str(e)}")
-    logger.error(traceback.format_exc())
-    raise
+diabetes_model = load_model_from_registry("diabetes_production")
+heart_model = load_model_from_registry("heart_disease_production")
 
+# --- Error Handler Decorator ---
+def safe_route(handler):
+    def wrapper(*args, **kwargs):
+        try:
+            return handler(*args, **kwargs)
+        except KeyError as e:
+            logger.error(f"Missing field: {e}")
+            return jsonify({'error': f'Missing field: {str(e)}'}), 400
+        except ValueError as e:
+            logger.error(f"Invalid value: {e}")
+            return jsonify({'error': f'Invalid value: {str(e)}'}), 400
+        except Exception as e:
+            logger.error(f"Unhandled error: {e}")
+            logger.error(traceback.format_exc())
+            return jsonify({'error': str(e)}), 500
+    wrapper.__name__ = handler.__name__
+    return wrapper
+
+# --- Utility Functions ---
+def predict(model, input_data: Dict[str, Any], expected_order: list, messages: Tuple[str, str]) -> Tuple[Response, int]:
+    values = [float(input_data[field]) for field in expected_order]
+    input_array = np.array([values])
+    logger.info(f"Predicting with input: {values}")
+    prediction = int(model.predict(input_array)[0])
+    message = messages[1] if prediction == 1 else messages[0]
+    logger.info(f"Prediction: {prediction}, Message: {message}")
+    return jsonify({'prediction': prediction, 'message': message}), 200
+
+# --- Routes ---
 @app.route('/')
 def index() -> Response:
-    """Return welcome message for API root endpoint."""
-    logger.info("Index endpoint accessed")
+    logger.info("Root endpoint accessed")
     return jsonify({"message": "Welcome to the Health Prediction API!"})
 
 @app.route('/diabetes_test', methods=['POST'])
+@safe_route
 def diabetes_test() -> Tuple[Response, int]:
-    """
-    Endpoint for diabetes prediction.
-    
-    Expected JSON payload:
-    {
-        "HighBP": int,
-        "GenHlth": int,
-        "DiffWalk": int,
-        "BMI": float,
-        "HighChol": int,
-        "HeartDiseaseorAttack": int,
-        "PhysHlth": int,
-        "Age": int,
-        "Stroke": int,
-        "income": int
-    }
-    
-    Returns:
-        Prediction result and message
-    """
-    logger.info("Diabetes test endpoint accessed")
-    try:
-        data: Dict[str, Any] = request.get_json()
-        logger.debug(f"Received data: {data}")
-
-        # Extract data from JSON
-        HighBP: int = int(data['HighBP'])
-        GenHlth: int = int(data['GenHlth'])
-        DiffWalk: int = int(data['DiffWalk'])
-        BMI: float = float(data['BMI'])
-        HighChol: int = int(data['HighChol'])
-        HeartDiseaseorAttack: int = int(data['HeartDiseaseorAttack'])
-        PhysHlth: int = int(data['PhysHlth'])
-        Age: int = int(data['Age'])
-        Stroke: int = int(data['Stroke'])
-        income: int = int(data['income'])
-
-        input_data: np.ndarray = np.array([[HighBP, GenHlth, DiffWalk, BMI, HighChol,
-                                HeartDiseaseorAttack, PhysHlth, Age, Stroke, income]])
-        
-        logger.info("Making diabetes prediction")
-        prediction: np.ndarray = diabetes_model.predict(input_data)
-        prediction_value: int = int(prediction[0])
-        
-        result_msg: str = "You are likely to have diabetes." if prediction_value == 1 else "You are unlikely to have diabetes."
-        logger.info(f"Diabetes prediction result: {prediction_value}, message: {result_msg}")
-
-        return jsonify({'prediction': prediction_value, 'message': result_msg}), 200
-
-    except KeyError as e:
-        error_msg = f"Missing required field: {str(e)}"
-        logger.error(error_msg)
-        return jsonify({'error': error_msg}), 400
-    except ValueError as e:
-        error_msg = f"Invalid value for field: {str(e)}"
-        logger.error(error_msg)
-        return jsonify({'error': error_msg}), 400
-    except Exception as e:
-        logger.error(f"Error in diabetes_test: {str(e)}")
-        logger.error(traceback.format_exc())
-        return jsonify({'error': str(e)}), 400
+    data = request.get_json()
+    fields = ["HighBP", "GenHlth", "DiffWalk", "BMI", "HighChol",
+              "HeartDiseaseorAttack", "PhysHlth", "Age", "Stroke", "income"]
+    return predict(
+        model=diabetes_model,
+        input_data=data,
+        expected_order=fields,
+        messages=("You are unlikely to have diabetes.", "You are likely to have diabetes.")
+    )
 
 @app.route('/heart_test', methods=['POST'])
+@safe_route
 def heart_test() -> Tuple[Response, int]:
-    """
-    Endpoint for heart disease prediction.
-    
-    Expected JSON payload:
-    {
-        "highbp": int,
-        "diabetes": float,
-        "highchol": int,
-        "stroke": int,
-        "diffwalk": int,
-        "genhlth": int,
-        "age": int,
-        "physhlth": int,
-        "smoker": int,
-        "income": int
-    }
-    
-    Returns:
-        Prediction result and message
-    """
-    logger.info("Heart test endpoint accessed")
-    try:
-        data: Dict[str, Any] = request.get_json()
-        logger.debug(f"Received data: {data}")
+    data = request.get_json()
+    fields = ["highbp", "diabetes", "highchol", "stroke", "diffwalk",
+              "genhlth", "age", "physhlth", "smoker", "income"]
+    return predict(
+        model=heart_model,
+        input_data=data,
+        expected_order=fields,
+        messages=("You are not at risk for heart disease.", "You are at risk for heart disease.")
+    )
 
-        # Extract data from JSON
-        highbp: int = int(data['highbp'])
-        diabetes: float = float(data['diabetes'])
-        highchol: int = int(data['highchol'])
-        stroke: int = int(data['stroke'])
-        diffwalk: int = int(data['diffwalk'])
-        genhlth: int = int(data['genhlth'])
-        age: int = int(data['age'])
-        physhlth: int = int(data['physhlth'])
-        smoker: int = int(data['smoker'])
-        income: int = int(data['income'])
-
-        input_data: np.ndarray = np.array([[highbp, diabetes, highchol, stroke, diffwalk,
-                                genhlth, age, physhlth, smoker, income]])
-        
-        logger.info("Making heart disease prediction")
-        prediction: np.ndarray = heart_model.predict(input_data)
-        prediction_value: int = int(prediction[0])
-        
-        result_msg: str = "You are at risk for heart disease." if prediction_value == 1 else "You are not at risk for heart disease."
-        logger.info(f"Heart disease prediction result: {prediction_value}, message: {result_msg}")
-
-        return jsonify({'prediction': prediction_value, 'message': result_msg}), 200
-
-    except KeyError as e:
-        error_msg = f"Missing required field: {str(e)}"
-        logger.error(error_msg)
-        return jsonify({'error': error_msg}), 400
-    except ValueError as e:
-        error_msg = f"Invalid value for field: {str(e)}"
-        logger.error(error_msg)
-        return jsonify({'error': error_msg}), 400
-    except Exception as e:
-        logger.error(f"Error in heart_test: {str(e)}")
-        logger.error(traceback.format_exc())
-        return jsonify({'error': str(e)}), 400
-
+# --- Start Server ---
 if __name__ == '__main__':
     logger.info("Starting Flask server")
     app.run(debug=True)
