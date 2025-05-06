@@ -38,7 +38,7 @@ def train_model(
     
     with mlflow.start_run():  # Remove nested=True
         # Load and prepare dataset
-        df = pd.read_csv('cleaned_data.csv')
+        df = pd.read_csv('data/cleaned_data.csv')
         
         selected_features = [
             "HighBP", "Diabetes_binary", "HighChol", "Stroke",
