@@ -31,7 +31,7 @@ def train_model(n_estimators: int, max_depth: int, learning_rate: float, subsamp
     with mlflow.start_run(nested=True):
 
         # Load and prepare dataset
-        df = pd.read_csv('cleaned_data.csv')
+        df = pd.read_csv('data/cleaned_data.csv')
         
         top_features: List[str] = ['HighBP', 'GenHlth', 'DiffWalk', 'BMI', 'HighChol', 
                             'HeartDiseaseorAttack', 'PhysHlth', 'Age', 'Stroke', 'Income']
