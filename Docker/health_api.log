@@ -1,0 +1,14 @@
+2025-05-07 16:28:07,647 - health_prediction_api - INFO - Starting Flask server
+2025-05-07 16:28:09,507 - health_prediction_api - INFO - Starting Flask server
+2025-05-07 16:28:11,639 - health_prediction_api - INFO - Root endpoint accessed
+2025-05-07 16:28:25,399 - health_prediction_api - INFO - Predicting with input: [1.0, 3.0, 0.0, 26.5, 1.0, 0.0, 2.0, 50.0, 0.0, 5.0]
+2025-05-07 16:28:25,425 - health_prediction_api - INFO - Prediction: 1, Message: You are likely to have diabetes.
+2025-05-07 16:34:36,501 - health_prediction_api - INFO - Starting Flask server
+2025-05-07 16:34:38,132 - health_prediction_api - INFO - Starting Flask server
+2025-05-07 16:35:00,359 - health_prediction_api - INFO - Root endpoint accessed
+2025-05-07 16:35:05,941 - health_prediction_api - INFO - Predicting with input: [1.0, 3.0, 0.0, 26.5, 1.0, 0.0, 2.0, 50.0, 0.0, 5.0]
+2025-05-07 16:35:05,959 - health_prediction_api - INFO - Prediction: 1, Message: You are likely to have diabetes.
+2025-05-07 16:35:29,334 - health_prediction_api - INFO - Predicting with input: [0.0, 1.0, 0.0, 22.0, 0.0, 0.0, 2.0, 31.0, 0.0, 5.0]
+2025-05-07 16:35:29,340 - health_prediction_api - INFO - Prediction: 0, Message: You are unlikely to have diabetes.
+2025-05-07 16:36:15,787 - health_prediction_api - INFO - Predicting with input: [1.0, 1.0, 1.0, 0.0, 0.0, 3.0, 55.0, 4.0, 1.0, 6.0]
+2025-05-07 16:36:15,798 - health_prediction_api - INFO - Prediction: 0, Message: You are not at risk for heart disease.
