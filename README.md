@@ -1,8 +1,12 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://python.org)
-[![Docker](https://img.shields.io/badge/Docker-✓-blue)](https://www.docker.com/)
-[![MLflow](https://img.shields.io/badge/MLflow-✓-orange)](https://mlflow.org/)
-[![Flask](https://img.shields.io/badge/Flask-API-green)](https://flask.palletsprojects.com/)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Docker](https://img.shields.io/badge/Docker-✓-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![MLflow](https://img.shields.io/badge/MLflow-✓-0194E2?logo=mlflow&logoColor=white)](https://mlflow.org/)
+[![Flask](https://img.shields.io/badge/Flask-API-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Machine Learning](https://img.shields.io/badge/Machine_Learning-✓-FF6F00?logo=scikitlearn&logoColor=white)]()
+[![Pandas](https://img.shields.io/badge/Pandas-✓-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Scikit-learn](https://img.shields.io/badge/scikit--learn-✓-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![Power BI](https://img.shields.io/badge/Power_BI-✓-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
 
 # 🩺 Healthcare-DEPI-Project
 
