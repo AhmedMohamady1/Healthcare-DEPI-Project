@@ -4,6 +4,13 @@ A full-stack machine learning project developed during the **Digital Egypt Pione
 
 ---
 
+## 🖥️ Web Application
+
+🌐 **Live Website**  
+➡️ [Visit the site](https://ahmedmohamady1.github.io/Healthcare-DEPI-Project/index.html)
+
+---
+
 ## 👥 Team Members
 
 <table>
@@ -103,13 +110,6 @@ Build machine learning models that:
 
 ## 🛠️ Pipeline
 ![ML Lifecycle Diagram](ML_Life_Cycle.jpg)  
-
----
-
-## 🖥️ Web Application
-
-🌐 **Live Website**  
-➡️ [Visit the site](https://ahmedmohamady1.github.io/Healthcare-DEPI-Project/index.html)
 
 ---
 
