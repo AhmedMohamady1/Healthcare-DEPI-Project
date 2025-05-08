@@ -78,8 +78,8 @@ A full-stack machine learning project developed during the **Digital Egypt Pione
 - **Entries:** ~250,000 individuals
 - **Features:** Numeric indicators like BMI, physical activity, smoking, age, blood pressure, and more.
 - **Targets:**
-  - `Diabetes_binary`: Presence of diabetes (`0` or `1`)
-  - `HeartDisease`: Presence of heart disease (`0` or `1`)
+  - `Diabetes_binary`: Risk of diabetes (`0` or `1`)
+  - `HeartDiseaseorAttack`: Risk of heart disease (`0` or `1`)
 
 ---
 
@@ -109,7 +109,7 @@ Build machine learning models that:
 ---
 
 ## 🛠️ Pipeline
-![ML Lifecycle Diagram](ML_Life_Cycle.jpg)  
+![ML Lifecycle Diagram](ML_Lifecycle.jpg)
 
 ---
 
@@ -124,7 +124,7 @@ cd Healthcare-DEPI-Project
 ```
 ---
 
-### ▶️ Run the Flask API Locally
+### ▶️ Run Flask API Version1 (MLflow)
 1. Install dependencies:
    
 ```bash
@@ -139,3 +139,23 @@ cd source
 ```bash
 python app.py
  ```
+
+### 🐳 Run the API Version2 (Docker)
+- download Docker folder from github.
+1. Make sure you have Docker and Docker Compose installed by using:
+```bash
+docker --version
+docker-compose --version
+```
+2. Navigate to the project directory.
+```bash
+cd Docker
+```
+3. Build and run the containers by using: 
+```bash
+docker-compose up --build
+```
+4. Stopping the containers by using:
+```bash
+docker-compose down
+```
