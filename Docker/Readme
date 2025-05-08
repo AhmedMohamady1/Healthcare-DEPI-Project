@@ -1,0 +1,13 @@
+how to run?
+download Docker folder from github.
+1. Make sure you have Docker and Docker Compose installed by using:
+docker --version
+docker-compose --version
+
+2. Navigate to the project directory.
+
+3. Build and run the containers by using: 
+docker-compose up --build
+
+4. Stopping the containers by using:
+docker-compose down
