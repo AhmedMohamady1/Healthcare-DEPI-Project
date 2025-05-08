@@ -85,7 +85,10 @@ The project includes data analysis, ML model building, evaluation, and a deploye
 </table>
 
 ---
+## Presentation via gamma
+[Presentation](https://gamma.app/docs/Predicting-Health-Outcomes-A-Machine-Learning-Approach-to-Diabete-gahjd4v662xo3p3)
 
+---
 ## 📊 Dataset Overview
 
 - **Source:** [Diabetes Health Indicators Dataset - Kaggle](https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset)
