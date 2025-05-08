@@ -110,3 +110,30 @@ Build machine learning models that:
 
 🌐 **Live Website**  
 ➡️ [Visit the site](https://ahmedmohamady1.github.io/Healthcare-DEPI-Project/index.html)
+
+---
+
+## 🛠️ Getting Started
+
+### 📥 Clone the Repository
+
+```bash
+git clone https://github.com/AhmedMohamady1/Healthcare-DEPI-Project.git
+cd Healthcare-DEPI-Project
+
+```
+---
+
+### ▶️ Run the Flask API Locally
+1. Install dependencies:
+   
+```bash
+pip install -r requirements.txt
+ ```
+3. Navigate to the API folder:
+
+4. Run the Flask app:
+   
+```bash
+python app.py
+ ```
