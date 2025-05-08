@@ -130,9 +130,11 @@ cd Healthcare-DEPI-Project
 ```bash
 pip install -r requirements.txt
  ```
-3. Navigate to the API folder:
-
-4. Run the Flask app:
+3. Navigate to the API folder
+```bash
+cd source
+```
+5. Run the Flask app:
    
 ```bash
 python app.py
