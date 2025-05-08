@@ -1,6 +1,10 @@
 # 🩺 Healthcare-DEPI-Project
 
-A full-stack machine learning project developed during the **Digital Egypt Pioneers Initiative (DEPI)**, aims to enhance the early detection of chronic diseases—specifically heart disease and diabetes—through predictive machine learning models. It also incorporates data visualizations and interactive dashboards to uncover patterns and provide insights into key factors influencing disease risk. By translating health data into actionable insights, the project empowers individuals to take proactive steps toward preventing chronic illnesses.. The project includes data analysis, ML model building, evaluation, and a deployed web interface with integrated MLflow and Docker support.
+A full-stack machine learning project developed during the **Digital Egypt Pioneers Initiative (DEPI)**, aims to enhance the early detection of chronic diseases—specifically heart disease and diabetes—through predictive machine learning models.
+
+It also incorporates data visualizations and interactive dashboards to uncover patterns and provide insights into key factors influencing disease risk. By translating health data into actionable insights, the project empowers individuals to take proactive steps toward preventing chronic illnesses.
+
+The project includes data analysis, ML model building, evaluation, and a deployed web interface with integrated MLflow and Docker support.
 
 ---
 
