@@ -1,3 +1,9 @@
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://python.org)
+[![Docker](https://img.shields.io/badge/Docker-✓-blue)](https://www.docker.com/)
+[![MLflow](https://img.shields.io/badge/MLflow-✓-orange)](https://mlflow.org/)
+[![Flask](https://img.shields.io/badge/Flask-API-green)](https://flask.palletsprojects.com/)
+
 # 🩺 Healthcare-DEPI-Project
 
 A full-stack machine learning project developed during the **Digital Egypt Pioneers Initiative (DEPI)**, aims to enhance the early detection of chronic diseases—specifically heart disease and diabetes—through predictive machine learning models.
